@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link href="../layui/css/layui.css" type="text/css" rel="stylesheet"/>
+		<link href="../css/common.css" type="text/css" rel="stylesheet"/>
+		<link href="../css/businessPlan.css" type="text/css" rel="stylesheet"/>
+	</head>
+	<body>
+		<div class="head-part">
+			<ul class="layui-nav" lay-filter="">
+				<li class="layui-nav-item"><a href=""><img src="../img/u38.png"/><span class="head-title">   Business Plan</span></a></li>
+				<li class="layui-nav-item layui-this" id="business-plan">
+					<a href="javascript:;">Business Plan</a>
+					<dl class="layui-nav-child">
+						<dd><a href="##" id="business-plan-creating">Creating</a></dd>
+						<dd><a href="##" id="business-plan-report">Report</a></dd>
+					</dl>
+				</li>
+				<li class="layui-nav-item"><a href="">Actual Sales</a></li>
+				<li class="layui-nav-item"><a href="">Rolling Estimate</a></li>
+				<li class="layui-nav-item"><a href="">Latest Estimate</a></li>
+
+
+				<li class="layui-nav-item" style="float: right;">
+					<a href=""><img src="../img/u44.png"/> UserName</a>
+					<dl class="layui-nav-child">
+						<dd><a href="">Login Out</a></dd>
+						<dd><a href="">Information</a></dd>
+					</dl>
+				</li>
+				<li class="layui-nav-item" style="float: right;">
+					<a href="">
+						<img src="../img/u40.png"/>
+						<img class="msg" src="../img/u46.png"/>
+						<span class="msg-num">3</span>
+					</a>
+				</li>
+				<li class="layui-nav-item" style="float: right;"><a href=""><img src="../img/u42.png"/></a></li>
+			</ul>
+		</div>
+
+		<div id="creating-part">
+			<div class="middle-part">
+				<div class="middle-child1">
+					<a class="return">
+						<span class="return-icon layui-icon layui-icon-left" style="font-size: 23px; color: rgba(224, 48, 30, 1);"></span>
+						<span class="return-title">China Coca-cola</span>
+					</a>
+				</div>
+
+				<div class="middle-child2">
+					<label class="layui-form-label layui-icon layui-icon-date" style="font-size: 25px;color: rgba(224, 48, 30, 1);"></label>
+					<div class="layui-inline year-change">
+						<div class="layui-input-inline">
+							<input type="text" class="layui-input" id="plan-year" placeholder="计划年份">
+						</div>
+					</div>
+				</div>
+
+				<button class="upload-plan layui-btn-disabled" id="upload-plan">确认上传</button>
+			</div>
+
+			<div class="bottom-business-plan-creating-part">
+				<input id="acceptFile" type="file" style="display: none;" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel"/>
+				<div class="creat-title">Creating</div>
+				<div>
+					<button class="choose-file" id="choose-file">选择文件...</button>
+					<span class="file-detail" id="file-name">文件名:***</span>
+					<span class="file-detail" id="sheet-name">工作表:***</span>
+					<span class="file-detail">起始行 1</span>
+					<div class="all-btn">
+						<button class="cover-import" id="cover-import">覆盖导入</button>
+						<button class="add-import" id="add-import">追加导入</button>
+						<button class="delete-import" id="delete-import">删除</button>
+					</div>
+				</div>
+
+				<div class="plan-data" >
+					<table class="layui-hide" id="plan-data-table"></table>
+				</div>
+			</div>
+		</div>
+
+
+		<div id="report-part" style="display: none">
+			<div class="middle-part">
+				<div class="middle-child1">
+					<a class="return">
+						<span class="return-icon layui-icon layui-icon-left" style="font-size: 23px; color: rgba(224, 48, 30, 1);"></span>
+						<span class="return-title">China Coca-cola</span>
+					</a>
+				</div>
+
+				<div class="middle-child2">
+					<label class="layui-form-label layui-icon layui-icon-date" style="font-size: 25px;color: rgba(224, 48, 30, 1);"></label>
+					<div class="layui-inline year-change">
+						<div class="layui-input-inline">
+							<input type="text" class="layui-input" id="report-year" placeholder="年份">
+						</div>
+					</div>
+				</div>
+
+				<button class="upload-plan" id="export">Export</button>
+			</div>
+
+			<div class="bottom-business-plan-report-part">
+				<div class="creat-title">Business Plan Report</div>
+				<div class="business-plan-sousuo-all">
+					<form class="layui-form layui-form-pane" id="business-plan-sousuo" action="">
+						<div class="layui-form-item">
+							<label class="layui-form-label business-plan-sousuo-label">Category</label>
+							<div class="layui-input-inline business-plan-sousuo-select">
+								<select name="quiz1" id="category" lay-filter="category" multiple lay-search lay-omit lay-tools>
+									<option value="">ALL</option>
+								</select>
+							</div>
+						</div>
+						<div class="layui-form-item" >
+							<label class="layui-form-label business-plan-sousuo-label">BP Name</label>
+							<div class="layui-input-inline business-plan-sousuo-select">
+								<select name="quiz1" id="bpName" lay-filter="bpName"  multiple lay-search lay-omit lay-tools>
+									<option value="">ALL</option>
+								</select>
+							</div>
+						</div>
+						<div class="layui-form-item" >
+							<label class="layui-form-label business-plan-sousuo-label">Brand</label>
+							<div class="layui-input-inline business-plan-sousuo-select">
+								<select name="quiz1" id="brand" lay-filter="brand" multiple lay-search lay-omit lay-tools>
+									<option value="">ALL</option>
+								</select>
+							</div>
+						</div>
+						<div class="layui-form-item">
+							<label class="layui-form-label business-plan-sousuo-label">PP Name</label>
+							<div class="layui-input-inline business-plan-sousuo-select">
+								<select name="quiz1" id="ppName" lay-filter="ppName" multiple lay-search lay-omit lay-tools>
+									<option value="">ALL</option>
+								</select>
+							</div>
+						</div>
+						<div class="layui-form-item" >
+							<label class="layui-form-label business-plan-sousuo-label">BG</label>
+							<div class="layui-input-inline business-plan-sousuo-select">
+								<select name="quiz1" id="bg" lay-filter="bg" multiple lay-search lay-omit lay-tools>
+									<option value="">ALL</option>
+								</select>
+							</div>
+						</div>
+						<div class="layui-form-item">
+							<button type="button" class="business-plan-sousuo-btn" id="inquireBusinessPlanReport">查询</button>
+						</div>
+					</form>
+				</div>
+				<div class="report-data">
+					<table class="layui-hide" id="business-plan-report-data-table"></table>
+				</div>
+				<div id="business-plan-report-page"></div>
+			</div>
+		</div>
+
+
+	</body>
+	<script type="text/javascript" src="../js/jquery-3.1.1.min.js" ></script>
+	<script type="text/javascript" src="../layui/layui.js"></script>
+	<script type="text/javascript" src="../js/xlsx.full.min.js"></script>
+	<script type="text/javascript" src="../js/businessPlan.js"></script>
+</html>

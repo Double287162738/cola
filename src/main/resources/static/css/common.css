@@ -1,0 +1,86 @@
+*{
+    padding: 0px;
+    margin: 0px;
+}
+.head-part{
+    background: url(../img/u32.png);
+    background-size: 100%;
+}
+.head-part .layui-nav{
+    background: none;
+}
+.head-title{
+    position: relative;
+    top: 3px;
+    font-size: 20px;
+    font-weight: bold;
+}
+.msg{
+    position: absolute;
+    top: 13px;
+    left: 25px;
+}
+.msg-num{
+    position: absolute;
+    top: -8px;
+    left: 29px;
+}
+.middle-part{
+    width: 100%;
+    height: 50px;
+    box-shadow: -1px 1px 5px 0 #a2958a;
+}
+.middle-child1{
+    display: inline-block;
+    width: 200px;
+    height: 100%;
+    margin-left: 27px;
+    border-right: 1px dashed #808080;
+    vertical-align: top;
+}
+.middle-child2{
+    display: inline-block;
+    width: 320px;
+    height: 100%;
+    padding-top: 5px;
+}
+.middle-child2 label{
+    left: -60px;
+}
+.year-change{
+    left: -60px;
+}
+.return{
+    cursor: pointer;
+}
+.return-title{
+    font-size: 19px;
+    font-weight: bold;
+    position: relative;
+    top: 10px;
+    left: 10px;
+}
+.return-icon{
+    position: relative;
+    top: 12px;
+    left: 10px;
+}
+
+.creat-title{
+    font-size: 16px;
+    font-weight: bold;
+    padding-left: 50px;
+    padding-top: 15px;
+}
+.upload-plan{
+    width: 102px;
+    height: 33px;
+    border-radius: 5px;
+    border: none;
+    color: white;
+    background: #E0301E;
+    cursor: pointer;
+    position: absolute;
+    right: 50px;
+    margin-top: 7px;
+}

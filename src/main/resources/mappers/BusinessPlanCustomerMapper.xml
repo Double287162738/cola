@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.coca.mapper.BusinessPlanCustomerMapper" >
+    <resultMap id="BaseResultMap" type="com.coca.model.BusinessPlan" >
+        <id column="ID" property="id" jdbcType="VARCHAR" />
+        <result column="YEAE" property="yeae" jdbcType="VARCHAR" />
+        <result column="FULL_CODE" property="fullCode" jdbcType="VARCHAR" />
+        <result column="BP_CODE" property="bpCode" jdbcType="VARCHAR" />
+        <result column="BP_NAME" property="bpName" jdbcType="VARCHAR" />
+        <result column="CATEGORY" property="category" jdbcType="VARCHAR" />
+        <result column="BRAND" property="brand" jdbcType="VARCHAR" />
+        <result column="PP_CODE" property="ppCode" jdbcType="VARCHAR" />
+        <result column="PP_NAME" property="ppName" jdbcType="VARCHAR" />
+        <result column="BG" property="bg" jdbcType="VARCHAR" />
+        <result column="PC_CODE" property="pcCode" jdbcType="VARCHAR" />
+        <result column="PC_NAME" property="pcName" jdbcType="VARCHAR" />
+        <result column="JAN" property="jan" jdbcType="VARCHAR" />
+        <result column="FEB" property="feb" jdbcType="VARCHAR" />
+        <result column="MAR" property="mar" jdbcType="VARCHAR" />
+        <result column="APR" property="apr" jdbcType="VARCHAR" />
+        <result column="MAY" property="may" jdbcType="VARCHAR" />
+        <result column="JUN" property="jun" jdbcType="VARCHAR" />
+        <result column="JUL" property="jul" jdbcType="VARCHAR" />
+        <result column="AUG" property="aug" jdbcType="VARCHAR" />
+        <result column="SEP" property="sep" jdbcType="VARCHAR" />
+        <result column="OCP" property="ocp" jdbcType="VARCHAR" />
+        <result column="NOV" property="nov" jdbcType="VARCHAR" />
+        <result column="CREAT_TIME" property="creatTime" jdbcType="TIMESTAMP" />
+        <result column="CREAT_BY" property="creatBy" jdbcType="VARCHAR" />
+    </resultMap>
+
+    <insert id="batchInsertBusinessPlanData">
+      insert into business_plan
+      (ID,PLAN_YEAR,FULL_CODE,BP_CODE,BP_NAME,CATEGORY,BRAND,PP_CODE,PP_NAME,BG,PC_CODE,PC_NAME,JAN,FEB,MAR,APR,MAY,JUN,JUL,AUG,SEP,OCT,NOV,DECE,CREATE_TIME,CREATE_BY)
+      values
+        <foreach collection="list" index="index" item="includeColumn" separator="," >
+            (#{includeColumn.id},
+            #{includeColumn.planYear},
+            #{includeColumn.fullCode},
+            #{includeColumn.bpCode},
+            #{includeColumn.bpName},
+            #{includeColumn.category},
+            #{includeColumn.brand},
+            #{includeColumn.ppCode},
+            #{includeColumn.ppName},
+            #{includeColumn.bg},
+            #{includeColumn.pcCode},
+            #{includeColumn.pcName},
+            #{includeColumn.jan},
+            #{includeColumn.feb},
+            #{includeColumn.mar},
+            #{includeColumn.apr},
+            #{includeColumn.may},
+            #{includeColumn.jun},
+            #{includeColumn.jul},
+            #{includeColumn.aug},
+            #{includeColumn.sep},
+            #{includeColumn.oct},
+            #{includeColumn.nov},
+            #{includeColumn.dece},
+            #{includeColumn.createTime},
+            #{includeColumn.createBy})
+        </foreach >
+    </insert>
+    
+    <select id="distinctSelect" resultMap="BaseResultMap">
+      select
+          DISTINCT
+          b.CATEGORY,
+          b.BP_NAME,
+          b.BRAND,
+          b.PP_NAME,
+          b.BG
+      from
+          business_plan b ;
+    </select>
+
+</mapper>
