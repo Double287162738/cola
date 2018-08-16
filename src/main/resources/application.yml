@@ -7,27 +7,25 @@ server:
 
 #spring
 spring:
-    datasource:
-        name: mysql_test
-        type: com.alibaba.druid.pool.DruidDataSource
-        druid:
-          filters: stat
-          driver-class-name: com.mysql.jdbc.Driver
-          url: jdbc:mysql://47.96.91.74:3306/my_sbm?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true
-          username: root
-          password: 123
-          initial-size: 1
-          min-idle: 1
-          max-active: 20
-          max-wait: 60000
-          time-between-eviction-runs-millis: 60000
-          min-evictable-idle-time-millis: 300000
-          validation-query: SELECT 'x'
-          test-while-idle: true
-          test-on-borrow: false
-          test-on-return: false
-          pool-prepared-statements: false
-          max-pool-prepared-statement-per-connection-size: 20
+  datasource:
+#    url: jdbc:sqlserver://localhost:1433;DatabaseName=my_sbm
+    url: jdbc:sqlserver://139.219.193.48:1433;DatabaseName=BPRE
+    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+    username: bpre
+    password: bpre
+    initial-size: 1
+    min-idle: 1
+    max-active: 20
+    test-on-borrow: true
+    max-wait: 60000
+    time-between-eviction-runs-millis: 60000
+    min-evictable-idle-time-millis: 300000
+    validation-query: SELECT 1 FROM DUAL
+    test-While-Idle: true
+    test-on-return: false
+    pool-prepared-statements: false
+    max-pool-prepared-statement-per-connection-size: 20
+    filters: stat,wall,log4j,config
 
 #mybatis
 mybatis:
