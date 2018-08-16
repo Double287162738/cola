@@ -38,7 +38,7 @@ public class BusinessPlanService {
         String dateString = sdf.format(new Date());
         SnowflakeIdWorker snowflakeIdWorker = new SnowflakeIdWorker(0,0);
         List<BusinessPlan> planDataList = businessPlanInparameter.getPlanDataList();
-        //分批次插入数据库，一次insert 300条
+        //分批次插入数据库，一次insert 80条
         Double everyTimeNum = 80.0;
         Double totalNum = Double.valueOf(planDataList.size());
         int frequency = (int) Math.ceil(totalNum/everyTimeNum);

@@ -14,7 +14,7 @@
         </commentGenerator>
         <!--数据库链接URL，用户名、密码 -->
         <jdbcConnection driverClass="com.microsoft.sqlserver.jdbc.SQLServerDriver"
-                        connectionURL="jdbc:sqlserver://localhost:1433;databaseName=my_sbm" userId="user" password="user">
+                        connectionURL="jdbc:sqlserver://139.219.193.48:1433;databaseName=BPRE" userId="bpre" password="bpre">
         </jdbcConnection>
         <javaTypeResolver>
             <property name="forceBigDecimals" value="false"/>
@@ -33,7 +33,7 @@
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
         <!-- 要生成哪些表-->
-        <table tableName="business_plan" domainObjectName="BusinessPlan" enableCountByExample="true" enableUpdateByExample="true"
+        <table tableName="actual_sales" domainObjectName="ActualSales" enableCountByExample="true" enableUpdateByExample="true"
                enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true">
             <!--<property name="useActualColumnNames" value="true" />-->
             <!--<generatedKey column="username" sqlStatement="SqlServer" type="post" identity="true"/>-->

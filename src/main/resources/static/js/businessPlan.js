@@ -120,18 +120,12 @@ layui.use(['jquery', 'laydate', 'laypage', 'layer', 'table','upload', 'form', 'e
         document.getElementById("acceptFile").click();
     });
     $("#cover-import").bind("click",function() {
-        $("#acceptFile").remove();
-        //可重复选择同一个Excel
-        $(".bottom-business-plan-creating-part").before('<input id="acceptFile" type="file" style="display: none;" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel"/>');
-        document.getElementById("acceptFile").onchange=acceptFile;
+        renewNewFileAcceptInput();
         allPlanData=[];
         document.getElementById("acceptFile").click();
     });
     $("#add-import").bind("click",function() {
-        $("#acceptFile").remove();
-        //可重复选择同一个Excel
-        $(".bottom-business-plan-creating-part").before('<input id="acceptFile" type="file" style="display: none;" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel"/>');
-        document.getElementById("acceptFile").onchange=acceptFile;
+        renewNewFileAcceptInput();
         document.getElementById("acceptFile").click();
     });
     $("#delete-import").bind("click",function(){
@@ -144,6 +138,7 @@ layui.use(['jquery', 'laydate', 'laypage', 'layer', 'table','upload', 'form', 'e
         });
         //禁用上传
         forbidToUploadPlanData();
+        renewNewFileAcceptInput();
         //清空文件名，表名
         document.getElementById("file-name").innerHTML="文件名:***";
         document.getElementById("sheet-name").innerHTML="工作表:***";
@@ -466,6 +461,18 @@ layui.use(['jquery', 'laydate', 'laypage', 'layer', 'table','upload', 'form', 'e
         }
         location.href=url;
     });
+
+
+
+    /**
+     * 重新增加文件选择
+     */
+    function renewNewFileAcceptInput() {
+        $("#acceptFile").remove();
+        //可重复选择同一个Excel
+        $(".bottom-business-plan-creating-part").before('<input id="acceptFile" type="file" style="display: none;" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel"/>');
+        document.getElementById("acceptFile").onchange=acceptFile;
+    }
 });
 
 

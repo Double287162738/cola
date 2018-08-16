@@ -5,20 +5,20 @@
 		<title></title>
 		<link href="../layui/css/layui.css" type="text/css" rel="stylesheet"/>
 		<link href="../css/common.css" type="text/css" rel="stylesheet"/>
-		<link href="../css/businessPlan.css" type="text/css" rel="stylesheet"/>
+		<link href="../css/actualSales.css" type="text/css" rel="stylesheet"/>
 	</head>
 	<body>
 		<div class="head-part">
 			<ul class="layui-nav" lay-filter="">
-				<li class="layui-nav-item"><a href=""><img src="../img/u38.png"/><span class="head-title">   Business Plan</span></a></li>
-				<li class="layui-nav-item layui-this" id="business-plan">
+				<li class="layui-nav-item"><a href=""><img src="../img/u38.png"/><span class="head-title">   ACTUAL SALES</span></a></li>
+				<li class="layui-nav-item" id="business-plan">
 					<a href="javascript:;">Business Plan</a>
 					<dl class="layui-nav-child">
 						<dd><a href="##" id="business-plan-creating">Creating</a></dd>
 						<dd><a href="##" id="business-plan-report">Report</a></dd>
 					</dl>
 				</li>
-				<li class="layui-nav-item">
+				<li class="layui-nav-item layui-this">
 					<a href="actualSales.html">Actual Sales</a>
 					<dl class="layui-nav-child">
 						<dd><a href="##" id="actual-sales-creating">Creating</a></dd>
@@ -60,31 +60,31 @@
 					<label class="layui-form-label layui-icon layui-icon-date" style="font-size: 25px;color: rgba(224, 48, 30, 1);"></label>
 					<div class="layui-inline year-change">
 						<div class="layui-input-inline">
-							<input type="text" class="layui-input" id="plan-year" placeholder="计划年份">
+							<input type="text" class="layui-input" id="actual-year-month" placeholder="年-月">
 						</div>
 					</div>
 				</div>
 
-				<button class="upload-plan layui-btn-disabled" id="upload-plan">确认上传</button>
+				<button class="upload-plan layui-btn-disabled" id="upload-actual-sales">确认上传</button>
 			</div>
 
-			<div class="bottom-business-plan-creating-part">
-				<input id="acceptFile" type="file" style="display: none;" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel"/>
+			<div class="bottom-actual-sales-creating-part">
+				<input id="actual-sales-acceptFile" type="file" style="display: none;" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel"/>
 				<div class="creat-title">Creating</div>
 				<div>
-					<button class="choose-file" id="choose-file">选择文件...</button>
+					<button class="actual-sales-choose-file" id="actual-sales-choose-file">选择文件...</button>
 					<span class="file-detail" id="file-name">文件名:***</span>
 					<span class="file-detail" id="sheet-name">工作表:***</span>
 					<span class="file-detail">起始行 1</span>
 					<div class="all-btn">
-						<button class="cover-import" id="cover-import">覆盖导入</button>
-						<button class="add-import" id="add-import">追加导入</button>
-						<button class="delete-import" id="delete-import">删除</button>
+						<button class="cover-import" id="actual-sales-cover-import">覆盖导入</button>
+						<button class="add-import" id="actual-sales-add-import">追加导入</button>
+						<button class="delete-import" id="actual-sales-delete-import">删除</button>
 					</div>
 				</div>
 
-				<div class="plan-data" >
-					<table class="layui-hide" id="plan-data-table"></table>
+				<div class="actual-sales-data" >
+					<table class="layui-hide" id="actual-sales-table"></table>
 				</div>
 			</div>
 		</div>
@@ -172,5 +172,5 @@
 	<script type="text/javascript" src="../js/jquery-3.1.1.min.js" ></script>
 	<script type="text/javascript" src="../layui/layui.js"></script>
 	<script type="text/javascript" src="../js/xlsx.full.min.js"></script>
-	<script type="text/javascript" src="../js/businessPlan.js"></script>
+	<script type="text/javascript" src="../js/actualSales.js"></script>
 </html>

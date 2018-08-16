@@ -1,0 +1,46 @@
+.actual-sales-choose-file{
+    width: 102px;
+    height: 33px;
+    border-radius: 5px;
+    color: white;
+    background: #5E5E5E;
+    border: 0px;
+    margin-left: 50px;
+    margin-top: 20px;
+}
+.actual-sales-choose-file:hover{
+    background: #E0301E;
+    cursor: pointer;
+}
+
+.file-detail{
+    padding-right: 30px;
+    margin-left: 30px;
+    border-right: 1px solid gainsboro;
+}
+.cover-import,.add-import,.delete-import{
+    width: 102px;
+    height: 33px;
+    background: #E0301E;
+    cursor: pointer;
+    border: none;
+    color: white;
+    border-radius: 5px;
+    margin-left: 20px;
+}
+.delete-import{
+    width: 80px;
+    background: #A32020;
+}
+.all-btn{
+    display: inline-block;
+    vertical-align: super;
+    position: absolute;
+    right: 50px;
+    margin-top: 20px;
+}
+
+.actual-sales-data{
+    padding-left: 50px;
+    padding-right: 50px;
+}

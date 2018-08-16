@@ -1,0 +1,558 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.coca.mapper.ActualSalesMapper" >
+  <resultMap id="BaseResultMap" type="com.coca.model.ActualSales" >
+    <id column="ID" property="id" jdbcType="VARCHAR" />
+    <result column="ACTUAL_YEAR" property="actualYear" jdbcType="VARCHAR" />
+    <result column="FULL_CODE" property="fullCode" jdbcType="VARCHAR" />
+    <result column="BP_CODE" property="bpCode" jdbcType="VARCHAR" />
+    <result column="BP_NAME" property="bpName" jdbcType="VARCHAR" />
+    <result column="CATEGORY" property="category" jdbcType="VARCHAR" />
+    <result column="BRAND" property="brand" jdbcType="VARCHAR" />
+    <result column="PP_CODE" property="ppCode" jdbcType="VARCHAR" />
+    <result column="PP_NAME" property="ppName" jdbcType="VARCHAR" />
+    <result column="BG" property="bg" jdbcType="VARCHAR" />
+    <result column="PC_CODE" property="pcCode" jdbcType="VARCHAR" />
+    <result column="PC_NAME" property="pcName" jdbcType="VARCHAR" />
+    <result column="JAN" property="jan" jdbcType="VARCHAR" />
+    <result column="FEB" property="feb" jdbcType="VARCHAR" />
+    <result column="MAR" property="mar" jdbcType="VARCHAR" />
+    <result column="APR" property="apr" jdbcType="VARCHAR" />
+    <result column="MAY" property="may" jdbcType="VARCHAR" />
+    <result column="JUN" property="jun" jdbcType="VARCHAR" />
+    <result column="JUL" property="jul" jdbcType="VARCHAR" />
+    <result column="AUG" property="aug" jdbcType="VARCHAR" />
+    <result column="SEP" property="sep" jdbcType="VARCHAR" />
+    <result column="OCT" property="oct" jdbcType="VARCHAR" />
+    <result column="NOV" property="nov" jdbcType="VARCHAR" />
+    <result column="DECE" property="dece" jdbcType="VARCHAR" />
+    <result column="CREATE_BY" property="createBy" jdbcType="VARCHAR" />
+    <result column="CREATE_TIME" property="createTime" jdbcType="VARCHAR" />
+    <result column="UPDATE_TIME" property="updateTime" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    ID, ACTUAL_YEAR, FULL_CODE, BP_CODE, BP_NAME, CATEGORY, BRAND, PP_CODE, PP_NAME, 
+    BG, PC_CODE, PC_NAME, JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DECE, 
+    CREATE_BY, CREATE_TIME, UPDATE_TIME
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.coca.model.ActualSalesExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from actual_sales
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from actual_sales
+    where ID = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from actual_sales
+    where ID = #{id,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.coca.model.ActualSalesExample" >
+    delete from actual_sales
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.coca.model.ActualSales" >
+    insert into actual_sales (ID, ACTUAL_YEAR, FULL_CODE, 
+      BP_CODE, BP_NAME, CATEGORY, 
+      BRAND, PP_CODE, PP_NAME, 
+      BG, PC_CODE, PC_NAME, 
+      JAN, FEB, MAR, APR, 
+      MAY, JUN, JUL, AUG, 
+      SEP, OCT, NOV, DECE, 
+      CREATE_BY, CREATE_TIME, UPDATE_TIME
+      )
+    values (#{id,jdbcType=VARCHAR}, #{actualYear,jdbcType=VARCHAR}, #{fullCode,jdbcType=VARCHAR}, 
+      #{bpCode,jdbcType=VARCHAR}, #{bpName,jdbcType=VARCHAR}, #{category,jdbcType=VARCHAR}, 
+      #{brand,jdbcType=VARCHAR}, #{ppCode,jdbcType=VARCHAR}, #{ppName,jdbcType=VARCHAR}, 
+      #{bg,jdbcType=VARCHAR}, #{pcCode,jdbcType=VARCHAR}, #{pcName,jdbcType=VARCHAR}, 
+      #{jan,jdbcType=VARCHAR}, #{feb,jdbcType=VARCHAR}, #{mar,jdbcType=VARCHAR}, #{apr,jdbcType=VARCHAR}, 
+      #{may,jdbcType=VARCHAR}, #{jun,jdbcType=VARCHAR}, #{jul,jdbcType=VARCHAR}, #{aug,jdbcType=VARCHAR}, 
+      #{sep,jdbcType=VARCHAR}, #{oct,jdbcType=VARCHAR}, #{nov,jdbcType=VARCHAR}, #{dece,jdbcType=VARCHAR}, 
+      #{createBy,jdbcType=VARCHAR}, #{createTime,jdbcType=VARCHAR}, #{updateTime,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.coca.model.ActualSales" >
+    insert into actual_sales
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="actualYear != null" >
+        ACTUAL_YEAR,
+      </if>
+      <if test="fullCode != null" >
+        FULL_CODE,
+      </if>
+      <if test="bpCode != null" >
+        BP_CODE,
+      </if>
+      <if test="bpName != null" >
+        BP_NAME,
+      </if>
+      <if test="category != null" >
+        CATEGORY,
+      </if>
+      <if test="brand != null" >
+        BRAND,
+      </if>
+      <if test="ppCode != null" >
+        PP_CODE,
+      </if>
+      <if test="ppName != null" >
+        PP_NAME,
+      </if>
+      <if test="bg != null" >
+        BG,
+      </if>
+      <if test="pcCode != null" >
+        PC_CODE,
+      </if>
+      <if test="pcName != null" >
+        PC_NAME,
+      </if>
+      <if test="jan != null" >
+        JAN,
+      </if>
+      <if test="feb != null" >
+        FEB,
+      </if>
+      <if test="mar != null" >
+        MAR,
+      </if>
+      <if test="apr != null" >
+        APR,
+      </if>
+      <if test="may != null" >
+        MAY,
+      </if>
+      <if test="jun != null" >
+        JUN,
+      </if>
+      <if test="jul != null" >
+        JUL,
+      </if>
+      <if test="aug != null" >
+        AUG,
+      </if>
+      <if test="sep != null" >
+        SEP,
+      </if>
+      <if test="oct != null" >
+        OCT,
+      </if>
+      <if test="nov != null" >
+        NOV,
+      </if>
+      <if test="dece != null" >
+        DECE,
+      </if>
+      <if test="createBy != null" >
+        CREATE_BY,
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME,
+      </if>
+      <if test="updateTime != null" >
+        UPDATE_TIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="actualYear != null" >
+        #{actualYear,jdbcType=VARCHAR},
+      </if>
+      <if test="fullCode != null" >
+        #{fullCode,jdbcType=VARCHAR},
+      </if>
+      <if test="bpCode != null" >
+        #{bpCode,jdbcType=VARCHAR},
+      </if>
+      <if test="bpName != null" >
+        #{bpName,jdbcType=VARCHAR},
+      </if>
+      <if test="category != null" >
+        #{category,jdbcType=VARCHAR},
+      </if>
+      <if test="brand != null" >
+        #{brand,jdbcType=VARCHAR},
+      </if>
+      <if test="ppCode != null" >
+        #{ppCode,jdbcType=VARCHAR},
+      </if>
+      <if test="ppName != null" >
+        #{ppName,jdbcType=VARCHAR},
+      </if>
+      <if test="bg != null" >
+        #{bg,jdbcType=VARCHAR},
+      </if>
+      <if test="pcCode != null" >
+        #{pcCode,jdbcType=VARCHAR},
+      </if>
+      <if test="pcName != null" >
+        #{pcName,jdbcType=VARCHAR},
+      </if>
+      <if test="jan != null" >
+        #{jan,jdbcType=VARCHAR},
+      </if>
+      <if test="feb != null" >
+        #{feb,jdbcType=VARCHAR},
+      </if>
+      <if test="mar != null" >
+        #{mar,jdbcType=VARCHAR},
+      </if>
+      <if test="apr != null" >
+        #{apr,jdbcType=VARCHAR},
+      </if>
+      <if test="may != null" >
+        #{may,jdbcType=VARCHAR},
+      </if>
+      <if test="jun != null" >
+        #{jun,jdbcType=VARCHAR},
+      </if>
+      <if test="jul != null" >
+        #{jul,jdbcType=VARCHAR},
+      </if>
+      <if test="aug != null" >
+        #{aug,jdbcType=VARCHAR},
+      </if>
+      <if test="sep != null" >
+        #{sep,jdbcType=VARCHAR},
+      </if>
+      <if test="oct != null" >
+        #{oct,jdbcType=VARCHAR},
+      </if>
+      <if test="nov != null" >
+        #{nov,jdbcType=VARCHAR},
+      </if>
+      <if test="dece != null" >
+        #{dece,jdbcType=VARCHAR},
+      </if>
+      <if test="createBy != null" >
+        #{createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.coca.model.ActualSalesExample" resultType="java.lang.Integer" >
+    select count(*) from actual_sales
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update actual_sales
+    <set >
+      <if test="record.id != null" >
+        ID = #{record.id,jdbcType=VARCHAR},
+      </if>
+      <if test="record.actualYear != null" >
+        ACTUAL_YEAR = #{record.actualYear,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fullCode != null" >
+        FULL_CODE = #{record.fullCode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bpCode != null" >
+        BP_CODE = #{record.bpCode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bpName != null" >
+        BP_NAME = #{record.bpName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.category != null" >
+        CATEGORY = #{record.category,jdbcType=VARCHAR},
+      </if>
+      <if test="record.brand != null" >
+        BRAND = #{record.brand,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ppCode != null" >
+        PP_CODE = #{record.ppCode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ppName != null" >
+        PP_NAME = #{record.ppName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bg != null" >
+        BG = #{record.bg,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pcCode != null" >
+        PC_CODE = #{record.pcCode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pcName != null" >
+        PC_NAME = #{record.pcName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.jan != null" >
+        JAN = #{record.jan,jdbcType=VARCHAR},
+      </if>
+      <if test="record.feb != null" >
+        FEB = #{record.feb,jdbcType=VARCHAR},
+      </if>
+      <if test="record.mar != null" >
+        MAR = #{record.mar,jdbcType=VARCHAR},
+      </if>
+      <if test="record.apr != null" >
+        APR = #{record.apr,jdbcType=VARCHAR},
+      </if>
+      <if test="record.may != null" >
+        MAY = #{record.may,jdbcType=VARCHAR},
+      </if>
+      <if test="record.jun != null" >
+        JUN = #{record.jun,jdbcType=VARCHAR},
+      </if>
+      <if test="record.jul != null" >
+        JUL = #{record.jul,jdbcType=VARCHAR},
+      </if>
+      <if test="record.aug != null" >
+        AUG = #{record.aug,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sep != null" >
+        SEP = #{record.sep,jdbcType=VARCHAR},
+      </if>
+      <if test="record.oct != null" >
+        OCT = #{record.oct,jdbcType=VARCHAR},
+      </if>
+      <if test="record.nov != null" >
+        NOV = #{record.nov,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dece != null" >
+        DECE = #{record.dece,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createBy != null" >
+        CREATE_BY = #{record.createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createTime != null" >
+        CREATE_TIME = #{record.createTime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.updateTime != null" >
+        UPDATE_TIME = #{record.updateTime,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update actual_sales
+    set ID = #{record.id,jdbcType=VARCHAR},
+      ACTUAL_YEAR = #{record.actualYear,jdbcType=VARCHAR},
+      FULL_CODE = #{record.fullCode,jdbcType=VARCHAR},
+      BP_CODE = #{record.bpCode,jdbcType=VARCHAR},
+      BP_NAME = #{record.bpName,jdbcType=VARCHAR},
+      CATEGORY = #{record.category,jdbcType=VARCHAR},
+      BRAND = #{record.brand,jdbcType=VARCHAR},
+      PP_CODE = #{record.ppCode,jdbcType=VARCHAR},
+      PP_NAME = #{record.ppName,jdbcType=VARCHAR},
+      BG = #{record.bg,jdbcType=VARCHAR},
+      PC_CODE = #{record.pcCode,jdbcType=VARCHAR},
+      PC_NAME = #{record.pcName,jdbcType=VARCHAR},
+      JAN = #{record.jan,jdbcType=VARCHAR},
+      FEB = #{record.feb,jdbcType=VARCHAR},
+      MAR = #{record.mar,jdbcType=VARCHAR},
+      APR = #{record.apr,jdbcType=VARCHAR},
+      MAY = #{record.may,jdbcType=VARCHAR},
+      JUN = #{record.jun,jdbcType=VARCHAR},
+      JUL = #{record.jul,jdbcType=VARCHAR},
+      AUG = #{record.aug,jdbcType=VARCHAR},
+      SEP = #{record.sep,jdbcType=VARCHAR},
+      OCT = #{record.oct,jdbcType=VARCHAR},
+      NOV = #{record.nov,jdbcType=VARCHAR},
+      DECE = #{record.dece,jdbcType=VARCHAR},
+      CREATE_BY = #{record.createBy,jdbcType=VARCHAR},
+      CREATE_TIME = #{record.createTime,jdbcType=VARCHAR},
+      UPDATE_TIME = #{record.updateTime,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.coca.model.ActualSales" >
+    update actual_sales
+    <set >
+      <if test="actualYear != null" >
+        ACTUAL_YEAR = #{actualYear,jdbcType=VARCHAR},
+      </if>
+      <if test="fullCode != null" >
+        FULL_CODE = #{fullCode,jdbcType=VARCHAR},
+      </if>
+      <if test="bpCode != null" >
+        BP_CODE = #{bpCode,jdbcType=VARCHAR},
+      </if>
+      <if test="bpName != null" >
+        BP_NAME = #{bpName,jdbcType=VARCHAR},
+      </if>
+      <if test="category != null" >
+        CATEGORY = #{category,jdbcType=VARCHAR},
+      </if>
+      <if test="brand != null" >
+        BRAND = #{brand,jdbcType=VARCHAR},
+      </if>
+      <if test="ppCode != null" >
+        PP_CODE = #{ppCode,jdbcType=VARCHAR},
+      </if>
+      <if test="ppName != null" >
+        PP_NAME = #{ppName,jdbcType=VARCHAR},
+      </if>
+      <if test="bg != null" >
+        BG = #{bg,jdbcType=VARCHAR},
+      </if>
+      <if test="pcCode != null" >
+        PC_CODE = #{pcCode,jdbcType=VARCHAR},
+      </if>
+      <if test="pcName != null" >
+        PC_NAME = #{pcName,jdbcType=VARCHAR},
+      </if>
+      <if test="jan != null" >
+        JAN = #{jan,jdbcType=VARCHAR},
+      </if>
+      <if test="feb != null" >
+        FEB = #{feb,jdbcType=VARCHAR},
+      </if>
+      <if test="mar != null" >
+        MAR = #{mar,jdbcType=VARCHAR},
+      </if>
+      <if test="apr != null" >
+        APR = #{apr,jdbcType=VARCHAR},
+      </if>
+      <if test="may != null" >
+        MAY = #{may,jdbcType=VARCHAR},
+      </if>
+      <if test="jun != null" >
+        JUN = #{jun,jdbcType=VARCHAR},
+      </if>
+      <if test="jul != null" >
+        JUL = #{jul,jdbcType=VARCHAR},
+      </if>
+      <if test="aug != null" >
+        AUG = #{aug,jdbcType=VARCHAR},
+      </if>
+      <if test="sep != null" >
+        SEP = #{sep,jdbcType=VARCHAR},
+      </if>
+      <if test="oct != null" >
+        OCT = #{oct,jdbcType=VARCHAR},
+      </if>
+      <if test="nov != null" >
+        NOV = #{nov,jdbcType=VARCHAR},
+      </if>
+      <if test="dece != null" >
+        DECE = #{dece,jdbcType=VARCHAR},
+      </if>
+      <if test="createBy != null" >
+        CREATE_BY = #{createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME = #{createTime,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        UPDATE_TIME = #{updateTime,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.coca.model.ActualSales" >
+    update actual_sales
+    set ACTUAL_YEAR = #{actualYear,jdbcType=VARCHAR},
+      FULL_CODE = #{fullCode,jdbcType=VARCHAR},
+      BP_CODE = #{bpCode,jdbcType=VARCHAR},
+      BP_NAME = #{bpName,jdbcType=VARCHAR},
+      CATEGORY = #{category,jdbcType=VARCHAR},
+      BRAND = #{brand,jdbcType=VARCHAR},
+      PP_CODE = #{ppCode,jdbcType=VARCHAR},
+      PP_NAME = #{ppName,jdbcType=VARCHAR},
+      BG = #{bg,jdbcType=VARCHAR},
+      PC_CODE = #{pcCode,jdbcType=VARCHAR},
+      PC_NAME = #{pcName,jdbcType=VARCHAR},
+      JAN = #{jan,jdbcType=VARCHAR},
+      FEB = #{feb,jdbcType=VARCHAR},
+      MAR = #{mar,jdbcType=VARCHAR},
+      APR = #{apr,jdbcType=VARCHAR},
+      MAY = #{may,jdbcType=VARCHAR},
+      JUN = #{jun,jdbcType=VARCHAR},
+      JUL = #{jul,jdbcType=VARCHAR},
+      AUG = #{aug,jdbcType=VARCHAR},
+      SEP = #{sep,jdbcType=VARCHAR},
+      OCT = #{oct,jdbcType=VARCHAR},
+      NOV = #{nov,jdbcType=VARCHAR},
+      DECE = #{dece,jdbcType=VARCHAR},
+      CREATE_BY = #{createBy,jdbcType=VARCHAR},
+      CREATE_TIME = #{createTime,jdbcType=VARCHAR},
+      UPDATE_TIME = #{updateTime,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>
