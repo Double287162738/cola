@@ -3,6 +3,8 @@ package com.coca.mapper;
 import com.coca.model.ActualSales;
 import com.coca.model.ActualSalesExample;
 import java.util.List;
+
+import com.coca.util.Page;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
@@ -19,6 +21,8 @@ public interface ActualSalesMapper {
     int insertSelective(ActualSales record);
 
     List<ActualSales> selectByExample(ActualSalesExample example);
+
+    List<ActualSales> selectByExamplePage(ActualSalesExample example);
 
     ActualSales selectByPrimaryKey(String id);
 

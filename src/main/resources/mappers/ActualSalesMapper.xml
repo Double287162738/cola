@@ -555,4 +555,21 @@
       UPDATE_TIME = #{updateTime,jdbcType=VARCHAR}
     where ID = #{id,jdbcType=VARCHAR}
   </update>
+
+  <select id="selectByExamplePage" resultMap="BaseResultMap" parameterType="com.coca.model.ActualSalesExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from actual_sales
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+    offset (#{page.currentPage}-1)*#{page.pageSize} row fetch next #{page.pageSize} row only
+  </select>
 </mapper>

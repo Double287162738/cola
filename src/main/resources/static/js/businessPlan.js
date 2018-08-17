@@ -295,7 +295,7 @@ layui.use(['jquery', 'laydate', 'laypage', 'layer', 'table','upload', 'form', 'e
      * @param page
      */
     function getNowPageData() {
-        layer.msg('生成report中，请稍等', {
+        layer.msg('BP report in the query. . .', {
             time:0
             ,icon: 16
             ,shade: 0.01
@@ -373,6 +373,7 @@ layui.use(['jquery', 'laydate', 'laypage', 'layer', 'table','upload', 'form', 'e
                         }
                     }
                 });
+                layer.closeAll();
             },
             error: function (data) {
                 alertFunction("查询失败","请重试或联系管理员");

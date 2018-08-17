@@ -1,5 +1,7 @@
 package com.coca.model;
 
+import com.coca.util.Page;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,6 +11,16 @@ public class ActualSalesExample {
     protected boolean distinct;
 
     protected List<Criteria> oredCriteria;
+
+    protected Page page;
+
+    public Page getPage() {
+        return page;
+    }
+
+    public void setPage(Page page) {
+        this.page = page;
+    }
 
     public ActualSalesExample() {
         oredCriteria = new ArrayList<Criteria>();

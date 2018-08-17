@@ -44,3 +44,48 @@
     padding-left: 50px;
     padding-right: 50px;
 }
+
+
+
+#actual-sales-sousuo > div{
+    display: inline-block;
+}
+.actual-sales-sousuo-label{
+    padding-left: 6px !important;
+    padding-right: 6px !important;
+    width: 80px !important;
+}
+.actual-sales-sousuo-select{
+    width: 120px !important;
+}
+.actual-sales-sousuo-btn{
+    float: left;
+    display: block;
+    padding: 7px 15px;
+    width: 80px;
+    font-weight: 400;
+    line-height: 20px;
+    text-align: center
+}
+.actual-sales-sousuo-all{
+    border: 1px solid #C0C0C0;
+    padding-top: 15px;
+    text-align: center;
+    margin-left: 50px;
+    margin-right: 50px;
+    margin-top: 10px;
+    border-radius: 10px;
+}
+.actual-sales-sousuo-all form{
+    margin:auto !important;
+}
+
+
+.report-data{
+    padding-left:50px;
+    padding-right: 50px;
+}
+#actual-sales-report-page{
+    padding-left:50px;
+}
+

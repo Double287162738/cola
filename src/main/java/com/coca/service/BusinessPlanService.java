@@ -203,7 +203,7 @@ public class BusinessPlanService {
             // 创建一个excel
             XSSFWorkbook wb = new XSSFWorkbook();
             //创建sheet
-            XSSFSheet sheet = wb.createSheet("Business Plan");
+            XSSFSheet sheet = wb.createSheet("Business Plan Report");
             //自适应宽度
             sheet.autoSizeColumn(1, true);
             sheet.setColumnWidth(0,40*256);
@@ -241,11 +241,11 @@ public class BusinessPlanService {
                     String newKey = keys.get(j).substring(0,1).toUpperCase()+keys.get(j).substring(1,keys.get(j).length());
                     String methodName = "get"+newKey;
                     Method method = exportData.get(i).getClass().getMethod(methodName,null);
-                    col.setCellValue(method.invoke(exportData.get(i),null).toString());
+                    col.setCellValue(method.invoke(exportData.get(i),null)==null? "":method.invoke(exportData.get(i),null).toString());
                 }
             }
             request.setCharacterEncoding("UTF-8");
-            String fileName = "消费记录.xlsx";
+            String fileName = year+"-BP-report.xlsx";
             fileName = URLEncoder.encode(fileName, "UTF-8");
             response.addHeader("Content-Disposition", "attachment;filename=" + fileName);
             response.setCharacterEncoding("UTF-8");
